@@ -10,6 +10,7 @@ import { CollectionContextProvider } from "./CollectionContext";
 import { ReactNativeContextProvider } from "./context/ReactNativeContext";
 import { EmotionContextProvider } from "./context/EmotionContext";
 import { PinnedEtasContextProvider } from "./context/PinnedEtasContext";
+import { ChaseNextContextProvider } from "./context/ChaseNextContext";
 const App = React.lazy(() => import("./App"));
 
 const AppWrapper = () => {
@@ -32,11 +33,13 @@ const AppWrapper = () => {
           <AppContextProvider>
             <EmotionContextProvider>
               <PinnedEtasContextProvider>
-                <ReactNativeContextProvider>
-                  <Suspense fallback={null}>
-                    <App />
-                  </Suspense>
-                </ReactNativeContextProvider>
+                <ChaseNextContextProvider>
+                  <ReactNativeContextProvider>
+                    <Suspense fallback={null}>
+                      <App />
+                    </Suspense>
+                  </ReactNativeContextProvider>
+                </ChaseNextContextProvider>
               </PinnedEtasContextProvider>
             </EmotionContextProvider>
           </AppContextProvider>
