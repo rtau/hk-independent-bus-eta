@@ -19,8 +19,8 @@ import {
   PushPin as PushPinIcon,
   PushPinOutlined as PushPinOutlinedIcon,
 } from "@mui/icons-material";
-import GpsFixedIcon from '@mui/icons-material/GpsFixed';
-import GpsOffIcon from '@mui/icons-material/GpsOff';
+import GpsFixedIcon from "@mui/icons-material/GpsFixed";
+import GpsOffIcon from "@mui/icons-material/GpsOff";
 import { useTranslation } from "react-i18next";
 import { toProperCase } from "../../utils";
 import TimeReport from "./TimeReport";
@@ -61,7 +61,7 @@ const StopAccordion = React.forwardRef<HTMLDivElement, StopAccordionProps>(
     const { alarmStopId, toggleStopAlarm } = useContext(ReactNativeContext);
     const { isStopAlarm } = useContext(ReactNativeContext);
     const { pinnedEtas, togglePinnedEta } = useContext(PinnedEtasContext);
-    const {chaseNexts, toggleChase } = useContext(ChaseNextContext);
+    const { chaseNexts, toggleChase } = useContext(ChaseNextContext);
     const { t } = useTranslation();
     const language = useLanguage();
     const { fares, faresHoliday } = routeList[routeId];
