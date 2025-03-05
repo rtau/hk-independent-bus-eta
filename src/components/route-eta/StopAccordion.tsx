@@ -19,6 +19,8 @@ import {
   PushPin as PushPinIcon,
   PushPinOutlined as PushPinOutlinedIcon,
 } from "@mui/icons-material";
+import GpsFixedIcon from '@mui/icons-material/GpsFixed';
+import GpsOffIcon from '@mui/icons-material/GpsOff';
 import { useTranslation } from "react-i18next";
 import { toProperCase } from "../../utils";
 import TimeReport from "./TimeReport";
@@ -28,6 +30,7 @@ import useLanguage from "../../hooks/useTranslation";
 import DbContext from "../../context/DbContext";
 import CollectionContext from "../../CollectionContext";
 import PinnedEtasContext from "../../context/PinnedEtasContext";
+import ChaseNextContext from "../../context/ChaseNextContext";
 
 interface StopAccordionProps {
   routeId: string;
@@ -58,6 +61,7 @@ const StopAccordion = React.forwardRef<HTMLDivElement, StopAccordionProps>(
     const { alarmStopId, toggleStopAlarm } = useContext(ReactNativeContext);
     const { isStopAlarm } = useContext(ReactNativeContext);
     const { pinnedEtas, togglePinnedEta } = useContext(PinnedEtasContext);
+    const {chaseNexts, toggleChase}=useContext(ChaseNextContext);
     const { t } = useTranslation();
     const language = useLanguage();
     const { fares, faresHoliday } = routeList[routeId];
@@ -156,6 +160,19 @@ const StopAccordion = React.forwardRef<HTMLDivElement, StopAccordionProps>(
               </IconButton>
             </Box>
             <Box>
+              <IconButton
+                // TODO: Implement chase
+                aria-label="chase"
+                onClick={() => toggleChase(targetRouteId)}
+                style={{ backgroundColor: "transparent" }}
+                size="large"
+              >
+                {chaseNexts.includes(targetRouteId) ? (
+                  <GpsOffIcon />
+                ) : (
+                  <GpsFixedIcon />
+                )}
+              </IconButton>
               <IconButton
                 aria-label="share"
                 onClick={handleShareClick}
